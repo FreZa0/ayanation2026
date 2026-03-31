@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(y)",
+      "Bash(npm install)",
+      "Bash(npx *)",
+      "Bash(npm run *)",
+      "Bash(npm uninstall *)",
+      "Bash(taskkill *)",
+      "Bash(docker compose up *)",
+      "Bash(npm init *)",
+      "Bash(node *)",
+      "Bash(timeout *)",
+      "Bash(move *)",
+      "Bash(mkdir *)",
+      "Bash(del *)",
+      "Bash(rmdir *)"
+    ]
+  },
+  "$version": 3
+}
