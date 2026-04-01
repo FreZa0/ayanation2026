@@ -15,7 +15,9 @@
       "Bash(move *)",
       "Bash(mkdir *)",
       "Bash(del *)",
-      "Bash(rmdir *)"
+      "Bash(rmdir *)",
+      "mcp__figma-mcp__download_figma_images",
+      "Bash(copy *)"
     ]
   },
   "$version": 3
