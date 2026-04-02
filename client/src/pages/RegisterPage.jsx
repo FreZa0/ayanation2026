@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export default function RegisterPage() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     fullName: "",
@@ -15,6 +16,8 @@ export default function RegisterPage() {
     e.preventDefault()
     // Обработка регистрации
     console.log("Form submitted:", formData)
+    // Перенаправление на страницу профиля после успешной регистрации
+    navigate("/profile")
   }
 
   return (
@@ -23,7 +26,7 @@ export default function RegisterPage() {
         {/* Logo */}
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/images/alrosa-logo.svg"
+            src="/images/logo.png"
             alt="ALROSA"
             className="h-[60px] w-auto"
           />

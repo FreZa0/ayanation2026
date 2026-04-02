@@ -256,9 +256,9 @@ export default function CoursesPage() {
       {/* Header */}
       <header className="flex h-[60px] items-center justify-between border-b px-[92px]">
         <div className="flex items-center gap-3">
-          <img src="/images/alrosa-logo.svg" alt="ALROSA" className="h-[32px] w-auto" />
+          <img src="/images/Vector.svg" alt="ALROSA" className="h-[32px] w-auto" />
           <span className="font-inter text-base font-semibold text-black">
-            ALROSA Talent Hub
+            АЛРОСА Огранка талантов
           </span>
         </div>
 

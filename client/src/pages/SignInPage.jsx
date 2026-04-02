@@ -21,7 +21,7 @@ export default function SignInPage() {
         {/* Logo */}
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/images/alrosa-logo.svg"
+            src="/images/logo.png"
             alt="ALROSA"
             className="h-[60px] w-auto"
           />

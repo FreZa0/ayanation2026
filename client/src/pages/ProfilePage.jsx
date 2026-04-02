@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -169,14 +170,16 @@ const logoComponents = {
 }
 
 export default function ProfilePage() {
+  const navigate = useNavigate()
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
       {/* Header */}
       <header className="flex h-[60px] items-center justify-between border-b px-[92px]">
         <div className="flex items-center gap-3">
-          <img src="/images/alrosa-logo.svg" alt="ALROSA" className="h-[32px] w-auto" />
+          <img src="/images/Vector.svg" alt="ALROSA" className="h-[32px] w-auto" />
           <span className="font-inter text-base font-semibold text-black">
-            ALROSA Talent Hub
+            АЛРОСА Огранка талантов
           </span>
         </div>
 
@@ -286,7 +289,10 @@ export default function ProfilePage() {
           </div>
 
           {/* Settings Button */}
-          <Button className="mb-8 h-12 w-full rounded-full bg-[#1F1F29] font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90">
+          <Button
+            onClick={() => navigate("/settings")}
+            className="mb-8 h-12 w-full rounded-full bg-[#1F1F29] font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
             Настройки профиля
           </Button>
 

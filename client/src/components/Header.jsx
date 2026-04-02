@@ -7,12 +7,12 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
-            src="/images/logo.png"
+            src="/images/Vector.svg"
             alt="ALROSA Logo"
             className="size-[45px]"
           />
           <span className="font-inter text-lg font-semibold text-black">
-            ALROSA Talent Hub
+            АЛРОСА Огранка талантов
           </span>
         </div>
 

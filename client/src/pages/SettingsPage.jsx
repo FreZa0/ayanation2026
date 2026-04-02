@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function SettingsPage() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("profile")
   const [formData, setFormData] = useState({
     nickname: "Terano",
@@ -38,7 +40,10 @@ export default function SettingsPage() {
         <h1 className="font-inter text-[32px] font-semibold text-black lg:text-[40px]">
           Редактировать профиль
         </h1>
-        <button className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]">
+        <button
+          onClick={() => navigate("/")}
+          className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]"
+        >
           <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -58,7 +63,7 @@ export default function SettingsPage() {
           Профиль
         </button>
         <button
-          onClick={() => setActiveTab("details")}
+          onClick={() => navigate("/settings2")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "details"
               ? "bg-white text-black shadow-sm"
@@ -68,7 +73,7 @@ export default function SettingsPage() {
           Сведения
         </button>
         <button
-          onClick={() => setActiveTab("security")}
+          onClick={() => navigate("/settings3")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "security"
               ? "bg-white text-black shadow-sm"
@@ -220,18 +225,30 @@ export default function SettingsPage() {
 
       {/* Other Tabs Placeholder */}
       {activeTab === "details" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Сведения" в разработке
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для редактирования сведений перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings2")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к сведениям
+          </Button>
         </div>
       )}
 
       {activeTab === "security" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Безопасность" в разработке
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для управления безопасностью перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings3")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к безопасности
+          </Button>
         </div>
       )}
     </div>

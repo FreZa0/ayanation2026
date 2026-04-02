@@ -1,14 +1,16 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 
 export default function Settings2Page() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("details")
   const [studentType, setStudentType] = useState("school")
   const [formData, setFormData] = useState({
     city: "Якутск",
     region: "Якутская область",
-    school: "Школа №20",
-    grade: "9 класс",
+    school: "ИТ-отдел",
+    grade: "КИБ",
     role: "Менеджер",
   })
 
@@ -48,7 +50,10 @@ export default function Settings2Page() {
         <h1 className="font-inter text-[32px] font-semibold text-black lg:text-[40px]">
           Редактировать профиль
         </h1>
-        <button className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]">
+        <button
+          onClick={() => navigate("/")}
+          className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]"
+        >
           <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -58,7 +63,7 @@ export default function Settings2Page() {
       {/* Main Tabs */}
       <div className="mb-8 inline-flex rounded-2xl bg-[#F7F7F9] p-1">
         <button
-          onClick={() => setActiveTab("profile")}
+          onClick={() => navigate("/settings")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "profile"
               ? "bg-white text-black shadow-sm"
@@ -78,7 +83,7 @@ export default function Settings2Page() {
           Сведения
         </button>
         <button
-          onClick={() => setActiveTab("security")}
+          onClick={() => navigate("/settings3")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "security"
               ? "bg-white text-black shadow-sm"
@@ -102,7 +107,7 @@ export default function Settings2Page() {
                   : "text-[#737373] hover:text-black"
               }`}
             >
-              Школьник
+              Сотрудник
             </button>
             <button
               onClick={() => setStudentType("student")}
@@ -112,7 +117,7 @@ export default function Settings2Page() {
                   : "text-[#737373] hover:text-black"
               }`}
             >
-              Студент
+              HR
             </button>
           </div>
 
@@ -154,7 +159,7 @@ export default function Settings2Page() {
             {/* School */}
             <div className="rounded-3xl bg-[#F7F7F9] px-6 py-5">
               <label className="font-inter text-sm text-[#737373]">
-                Учебное заведение
+                Отдел
               </label>
               <div className="mt-1 flex items-center justify-between">
                 <span className="font-inter text-xl font-medium text-black">
@@ -169,7 +174,7 @@ export default function Settings2Page() {
             {/* Grade */}
             <div className="rounded-3xl bg-[#F7F7F9] px-6 py-5">
               <label className="font-inter text-sm text-[#737373]">
-                Класс
+                Группа
               </label>
               <div className="mt-1 flex items-center justify-between">
                 <span className="font-inter text-xl font-medium text-black">
@@ -252,18 +257,30 @@ export default function Settings2Page() {
 
       {/* Other Tabs Placeholder */}
       {activeTab === "profile" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Профиль"
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для редактирования профиля перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к профилю
+          </Button>
         </div>
       )}
 
       {activeTab === "security" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Безопасность"
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для управления безопасностью перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings3")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к безопасности
+          </Button>
         </div>
       )}
     </div>

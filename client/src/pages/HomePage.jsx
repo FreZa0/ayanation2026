@@ -1,8 +1,8 @@
 import { useState } from "react"
+import { Link, useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const courses = [
   {
@@ -83,6 +83,7 @@ const events = [
     badge: "Вам назначено",
     badgeType: "blue",
     duration: "55 минут",
+    icon: "star",
   },
   {
     id: 2,
@@ -94,6 +95,7 @@ const events = [
     badge: "",
     badgeType: "",
     duration: "55 минут",
+    icon: "line",
   },
   {
     id: 3,
@@ -105,6 +107,7 @@ const events = [
     badge: "",
     badgeType: "",
     duration: "55 минут",
+    icon: "triangle",
   },
   {
     id: 4,
@@ -116,6 +119,7 @@ const events = [
     badge: "Вам назначено",
     badgeType: "blue",
     duration: "55 минут",
+    icon: "star",
   },
   {
     id: 5,
@@ -127,6 +131,7 @@ const events = [
     badge: "",
     badgeType: "",
     duration: "55 минут",
+    icon: "line",
   },
 ]
 
@@ -191,10 +196,11 @@ const tests = [
 const gradientClasses = {
   red: "bg-gradient-to-br from-[#FF1B4D] to-[#FF8A65]",
   purple: "bg-gradient-to-br from-[#9FA8DA] to-[#C5CAE9]",
-  pink: "bg-gradient-to-br from-[#BA68C8] to-[#FF4081]",
+  pink: "bg-gradient-to-br from-[#BA68C8] via-[#9B5DE5] to-[#F15BB5]",
 }
 
 export default function HomePage() {
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
 
   return (
@@ -202,49 +208,50 @@ export default function HomePage() {
       {/* Header */}
       <header className="flex h-[60px] items-center justify-between border-b px-[92px]">
         <div className="flex items-center gap-3">
-          <img src="/images/alrosa-logo.svg" alt="ALROSA" className="h-[32px] w-auto" />
+          <img src="/images/Vector.svg" alt="ALROSA" className="h-[32px] w-auto" />
           <span className="font-inter text-base font-semibold text-black">
-            ALROSA Talent Hub
+            АЛРОСА Огранка талантов
           </span>
         </div>
 
         <nav className="flex items-center gap-1">
-          <a href="#" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
+          <Link to="/" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
             Главное
-          </a>
-          <a href="#" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
+          </Link>
+          <Link to="#" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
             О нас
-          </a>
-          <a href="/courses" className="rounded-lg bg-[#F5F5F5] px-4 py-2 font-inter text-base font-medium text-black">
+          </Link>
+          <Link to="/courses" className="rounded-lg bg-[#F5F5F5] px-4 py-2 font-inter text-base font-medium text-black">
             Курсы
-          </a>
-          <a href="#" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
+          </Link>
+          <Link to="#" className="rounded-lg px-4 py-2 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
             Контакты
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="outline" className="h-9 rounded-lg border-[#E5E5E5] px-4 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]">
+          <Button
+            onClick={() => navigate("/signin")}
+            variant="outline"
+            className="h-9 rounded-lg border-[#E5E5E5] px-4 font-inter text-base font-medium text-black hover:bg-[#F5F5F5]"
+          >
             Войти
           </Button>
-          <Button className="h-9 rounded-lg bg-[#1A1A1A] px-4 font-inter text-base font-medium text-white hover:bg-[#1A1A1A]/90">
+          <Button
+            onClick={() => navigate("/register")}
+            className="h-9 rounded-lg bg-[#1A1A1A] px-4 font-inter text-base font-medium text-white hover:bg-[#1A1A1A]/90"
+          >
             Зарегистрироваться
           </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative px-[92px] pt-10">
+      <section className="px-[92px] pt-10">
         <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#E085FF] via-[#A87CFF] to-[#85B3FF] p-16">
-          {/* Abstract shapes */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-white blur-3xl" />
-            <div className="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-blue-300 blur-3xl" />
-          </div>
-
           <div className="relative z-10 flex flex-col items-center gap-6 text-center">
             <h1 className="font-inter text-[48px] font-bold uppercase leading-tight text-white">
-              ALROSA TALENT HUB
+              АЛРОСА Огранка талантов
             </h1>
             <p className="max-w-[600px] font-inter text-lg text-white/90">
               Единая цифровая среда обучения и развития сотрудников
@@ -290,18 +297,18 @@ export default function HomePage() {
       <section className="px-[92px] py-10">
         <div className="flex items-center justify-between rounded-[24px] bg-[#F7F7F9] px-16 py-10">
           {/* Left spiral decoration */}
-          <div className="flex">
+          {/* <div className="flex">
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
                 className="ml-[-8px] flex size-24 items-center justify-center rounded-full border border-[#C7C7C7]"
               />
             ))}
-          </div>
+          </div> */}
 
           <div className="flex flex-col items-center gap-2 text-center">
             <h2 className="font-inter text-[32px] font-semibold text-black">
-              ALROSA Talent Hub
+              АЛРОСА Огранка талантов
             </h2>
             <p className="max-w-[500px] font-inter text-base text-black">
               Единая цифровая среда обучения и развития сотрудников
@@ -313,14 +320,14 @@ export default function HomePage() {
           </div>
 
           {/* Right spiral decoration */}
-          <div className="flex">
+          {/* <div className="flex">
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
                 className="ml-[-8px] flex size-24 items-center justify-center rounded-full border border-[#C7C7C7]"
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -335,9 +342,9 @@ export default function HomePage() {
               8
             </span>
           </div>
-          <a href="/courses" className="font-inter text-base font-medium text-[#0066FF] hover:underline">
+          <Link to="/courses" className="font-inter text-base font-medium text-[#0066FF] hover:underline">
             Смотреть все
-          </a>
+          </Link>
         </div>
 
         <div className="flex gap-4 overflow-x-auto pb-4">
@@ -554,9 +561,9 @@ export default function HomePage() {
             {/* Logo & Description */}
             <div className="flex flex-col gap-4 md:col-span-1">
               <div className="flex items-center gap-2">
-                <img src="/images/alrosa-logo.svg" alt="ALROSA" className="h-8 w-auto" />
+                <img src="/images/Vector.svg" alt="ALROSA" className="h-8 w-auto" />
                 <span className="font-inter text-base font-semibold text-black">
-                  ALROSA Talent Hub
+                  АЛРОСА Огранка талантов
                 </span>
               </div>
               <p className="font-inter text-sm text-[#737373]">

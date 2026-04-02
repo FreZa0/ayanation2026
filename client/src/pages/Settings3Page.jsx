@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 import { Button } from "@/components/ui/button"
 
 export default function Settings3Page() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("security")
   const [formData, setFormData] = useState({
     phone: "+7(914) 224-99-00",
@@ -32,7 +34,10 @@ export default function Settings3Page() {
         <h1 className="font-inter text-[32px] font-semibold text-black lg:text-[40px]">
           Редактировать профиль
         </h1>
-        <button className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]">
+        <button
+          onClick={() => navigate("/")}
+          className="flex size-12 items-center justify-center rounded-2xl bg-[#F7F7F9] transition-colors hover:bg-[#E5E5E5]"
+        >
           <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -42,7 +47,7 @@ export default function Settings3Page() {
       {/* Main Tabs */}
       <div className="mb-8 inline-flex rounded-2xl bg-[#F7F7F9] p-1">
         <button
-          onClick={() => setActiveTab("profile")}
+          onClick={() => navigate("/settings")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "profile"
               ? "bg-white text-black shadow-sm"
@@ -52,7 +57,7 @@ export default function Settings3Page() {
           Профиль
         </button>
         <button
-          onClick={() => setActiveTab("details")}
+          onClick={() => navigate("/settings2")}
           className={`rounded-xl px-6 py-3 font-inter text-base font-medium transition-colors lg:px-8 lg:py-4 ${
             activeTab === "details"
               ? "bg-white text-black shadow-sm"
@@ -180,18 +185,30 @@ export default function Settings3Page() {
 
       {/* Other Tabs Placeholder */}
       {activeTab === "profile" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Профиль"
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для редактирования профиля перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к профилю
+          </Button>
         </div>
       )}
 
       {activeTab === "details" && (
-        <div className="flex items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
-          <p className="font-inter text-lg text-[#737373]">
-            Раздел "Сведения"
+        <div className="flex flex-col items-center justify-center rounded-3xl bg-[#F7F7F9] py-20">
+          <p className="mb-4 font-inter text-lg text-[#737373]">
+            Для редактирования сведений перейдите в соответствующий раздел
           </p>
+          <Button
+            onClick={() => navigate("/settings2")}
+            className="h-14 rounded-2xl bg-[#1F1F29] px-8 font-inter text-base font-medium text-white hover:bg-[#1F1F29]/90"
+          >
+            Перейти к сведениям
+          </Button>
         </div>
       )}
     </div>
